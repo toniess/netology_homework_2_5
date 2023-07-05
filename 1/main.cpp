@@ -3,10 +3,17 @@
 class Figure
 {
 public:
-	Figure() : m_corner(0) {};
+	Figure() : m_corner(0)
+	{
+		m_type = "Фигура";
+	};
 	int getCornerCount()
 	{
 		return m_corner;
+	}
+	std::string type()
+	{
+		return m_type;
 	}
 
 protected:
@@ -14,6 +21,7 @@ protected:
 	{
 		m_corner = corners;
 	}
+	std::string m_type;
 
 private:
 	int m_corner;
@@ -22,14 +30,25 @@ private:
 class Triangle : public Figure
 {
 public:
-	Triangle() : Figure(3) {};
+	Triangle() : Figure(3)
+	{
+		m_type = "Треугольник";
+	};
 };
 
 class Quadrilateral : public Figure
 {
 public:
-	Quadrilateral() : Figure(4) {};
+	Quadrilateral() : Figure(4)
+	{
+		m_type = "Четырехугольник";
+	};
 };
+
+void print_info(Figure& f)
+{
+	std::cout << f.type() << ": " << f.getCornerCount() << "\n";
+}
 
 int main()
 {
@@ -37,13 +56,14 @@ int main()
 	std::cout << "Количество сторон:\n";
 	
 	Figure f;
-	std::cout << "Фигура: " << f.getCornerCount() << "\n";
+	print_info(f);
 
 	Triangle t;
-	std::cout << "Треугольник: " << t.getCornerCount() << "\n";
+	print_info(t);
 
 	Quadrilateral q;
-	std::cout << "Четырехугольник: " << q.getCornerCount() << "\n";
+	print_info(q);
+
 }
 
 

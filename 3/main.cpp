@@ -191,9 +191,10 @@ class Parallelogram : public Quadrilateral
 {
 public:
 	Parallelogram(int cornerAC, int cornerBD, int sideAC, int sideBD)
-		: Quadrilateral(90, 90, 90, 90, sideAC, sideBD, sideAC, sideBD) {
-		m_name = "ֿאנאככוכמדנאלל";
-	}
+		: Quadrilateral(cornerAC, cornerBD, cornerAC, cornerBD, sideAC, sideBD, sideAC, sideBD)
+	{
+		m_name = "ֿאנאככוכמדנאל";
+	};
 	bool isRight() override
 	{
 		return m_sideA == m_sideC
@@ -253,39 +254,44 @@ public:
 	}
 };
 
+void print(Figure& f)
+{
+	f.print_info();
+}
+
 int main()
 {
 	setlocale(LC_ALL, "russian");
 
 	Figure f;
-	f.print_info();
+	print(f);
 
 	Triangle t(60, 20, 100, 14, 10, 5);
-	t.print_info();
+	print(t);
 
 	RightTriangle rt(30, 60, 3, 4, 5);
-	rt.print_info();
+	print(rt);
 
 	IsoscelesTriangle it(100, 41, 10, 21);
-	it.print_info();
+	print(it);
 
 	EquilateralTriangle et(43);
-	et.print_info();
+	print(et);
 
 	Quadrilateral q(10, 20, 30, 40, 4, 64, 34, 9);
-	q.print_info();
+	print(q);
 
 	Parallelogram p(40, 50, 20, 30);
-	p.print_info();
+	print(p);
 
 	Rectangle r(20, 30);
-	r.print_info();
+	print(r);
 
 	Square s(30);
-	s.print_info();
+	print(s);
 
 	Rhomb rh(30, 60, 15);
-	rh.print_info();
+	print(rh);
 }
 
 
